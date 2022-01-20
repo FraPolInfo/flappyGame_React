@@ -42,7 +42,7 @@ const CoreGame = () => {
     })
     /* Component Did Update listening state.top  */
     useEffect(() => {
-            endGame()
+        endGame()
     }, [state.top])
     /*  */
     /* funzioni movimento */
@@ -85,7 +85,12 @@ const CoreGame = () => {
             >
                 sopra
             </div>
-            <span className="character" style={{ left: "50%", top: state.top.toString() + "%" }}>XXXXXXX</span>
+            <span
+                className="character"
+                style={{ left: "50%", top: state.top.toString() + "%" }}
+            >
+                XXXXXXX
+            </span>
             {
                 state.startingFlag === true &&
                 <span className="start-game" > Clicca per Cominciare </span>
