@@ -1,3 +1,9 @@
+/* utils */
+.bg-red{
+    background-color: red;
+}
+
+
 /* smartphone */
 .core-game{
     height:100% ;
@@ -9,8 +15,25 @@
 .character{
     color: red;
     position: absolute;
-    transition: all .2s linear 0s;
+    transition: all .025s linear 0s;
     transform:translate(-50%, -50%)
+}
+.start-game{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform:translate(-50%, -50%)
+
+}
+.top-margin{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+}
+.bottom-margin{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
 }
 
 /* tablet */

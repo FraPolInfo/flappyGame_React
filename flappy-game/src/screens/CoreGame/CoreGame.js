@@ -5,11 +5,12 @@ const CoreGame = () => {
 
     let bottomBorder = 10
     let topBorder = 90
-    let jumpingSpeed = 1
-    let fallingSpeed = 1
+    let jumpingSpeed = 4
+    let fallingSpeed = 4
 
     const [state, setState] = useState({
-        top: 20,
+        top: 50,
+        startingFlag: true,
         jumpingFlag: false
     })
 
@@ -17,31 +18,41 @@ const CoreGame = () => {
     /*continua a muovere il personaggio in basso finchè la jumpingFlag è falsa, e
     e verso l'alto quando è vera.*/
     useEffect(() => {
-        let top = null;
-        if(state.jumpingFlag) {
-            top = state.top - jumpingSpeed 
-        } else {
-            top = state.top + fallingSpeed
-        }
+        if (state.startingFlag === false) {
 
-        /* Controlla che il personaggio non stia saltando oltre il limite superiore   o cadendo oltre il limite inferiore*/
-        if ( (state.top < topBorder && !state.jumpingFlag) || (state.top > bottomBorder && state.jumpingFlag)) {
-            const interval = setTimeout(() => {
-                setState({
-                    ...state,
-                    top: top
-                })
-            }, 10)
+            let top = null;
+            if (state.jumpingFlag) {
+                top = state.top - jumpingSpeed
+            } else {
+                top = state.top + fallingSpeed
+            }
 
-            return () => clearTimeout(interval)
+            /* Controlla che il personaggio non stia saltando oltre il limite superiore   o cadendo oltre il limite inferiore*/
+            if ((state.top < topBorder && !state.jumpingFlag) || (state.top > bottomBorder && state.jumpingFlag)) {
+                const interval = setTimeout(() => {
+                    setState({
+                        ...state,
+                        top: top
+                    })
+                }, 30)
+
+                return () => clearTimeout(interval)
+            }
         }
     })
+    /* Component Did Update listeing state.top  */
+    useEffect(() => {
+        if (state.top === bottomBorder || state.top === topBorder) {
+            alert("hai perso")
+        }
+    }, [state.top])
     /*  */
+    /* funzioni movimento */
     const characterJumping = () => {
-    setState({
+        setState({
             ...state,
             jumpingFlag: true
-        })  
+        })
     }
     const characterFalling = () => {
         setState({
@@ -49,10 +60,34 @@ const CoreGame = () => {
             jumpingFlag: false
         })
     }
+    /* funzione run game */
+    const startGame = () => {
+        setState({
+            ...state,
+            startingFlag: false,
+        })
+    }
+
+
 
     return (
-        <div className="core-game" onMouseDown={characterJumping} onMouseUp={characterFalling}>
+        <div className="core-game" onClick={startGame} onMouseDown={characterJumping} onMouseUp={characterFalling}>
+            <div
+                className="top-margin bg-red"
+                style={{ height: bottomBorder.toString() + "%" }}
+            >
+                sopra
+            </div>
             <span className="character" style={{ left: "50%", top: state.top.toString() + "%" }}>XXXXXXX</span>
+            {
+                state.startingFlag === true &&
+                <span className="start-game" > Clicca per Cominciare </span>
+            }
+            <div
+                className="bottom-margin bg-red"
+                style={{ height: bottomBorder.toString() + "%" }}
+            >sotto
+            </div>
         </div>
     );
 }
