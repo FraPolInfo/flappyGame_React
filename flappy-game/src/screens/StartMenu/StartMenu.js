@@ -11,13 +11,9 @@ const StartMenu = (props) => {
         }
     }
 
-
-
-
-
     return (
         <div className="start-menu">
-            io sono start menu
+            Il record Attuale è {localStorage.getItem('points')}
             <button onClick={handlerRunGame} > avvia gioco </button>
         </div>
     )

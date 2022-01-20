@@ -16,8 +16,8 @@ const ScreenGame = () => {
     )
     /* ComponentdidUpdate */
     useEffect(() => {
-        console.log(state);
-    })
+        localStorage.setItem("points", 0);
+    }, [])
 
     /* funzione di visualizzazione */
     const showScreens = () => {
@@ -32,16 +32,12 @@ const ScreenGame = () => {
         }
         setState(
             {
+                ...state,
                 showRunGame: showRunGame,
                 showStartMenu: showStartMenu
             }
         )
     }
-    /*  */
-
-
-
-
 
 
     return (
@@ -55,7 +51,9 @@ const ScreenGame = () => {
             }
             {
                 state.showRunGame === true &&
-                <CoreGame />
+                <CoreGame 
+                    callbackReturnToStart={showScreens}
+                    />
             }
         </div>
     )

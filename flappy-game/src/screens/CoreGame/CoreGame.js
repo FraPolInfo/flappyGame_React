@@ -1,7 +1,9 @@
 import "./CoreGame.css"
+
+import PropTypes from 'prop-types';
 import React, { useState, useEffect } from "react"
 
-const CoreGame = () => {
+const CoreGame = (props) => {
 
     let topBorder = 10
     let bottomBorder = 90
@@ -11,7 +13,9 @@ const CoreGame = () => {
     const [state, setState] = useState({
         top: 50,
         startingFlag: true,
-        jumpingFlag: false
+        jumpingFlag: false,
+        life: 3,
+        points: 5
     })
 
     /* Component Did Update
@@ -28,16 +32,14 @@ const CoreGame = () => {
             }
 
             /* Controlla che il personaggio non stia saltando oltre il limite superiore   o cadendo oltre il limite inferiore*/
-            if ((state.top > topBorder && state.jumpingFlag) || (state.top < bottomBorder && !state.jumpingFlag)) {
-                const interval = setTimeout(() => {
-                    setState({
-                        ...state,
-                        top: top
-                    })
-                }, 30)
+            const interval = setTimeout(() => {
+                setState({
+                    ...state,
+                    top: top
+                })
+            }, 30)
 
-                return () => clearTimeout(interval)
-            }
+            return () => clearTimeout(interval)
         }
     })
     /* Component Did Update listening state.top  */
@@ -49,7 +51,8 @@ const CoreGame = () => {
     const characterJumping = () => {
         setState({
             ...state,
-            jumpingFlag: true
+            jumpingFlag: true,
+            startingFlag: false
         })
     }
     const characterFalling = () => {
@@ -58,27 +61,29 @@ const CoreGame = () => {
             jumpingFlag: false
         })
     }
-    /* funzione run game */
-    const startGame = () => {
-        setState({
-            ...state,
-            startingFlag: false,
-        })
-    }
+
     /* funzione end game */
     const endGame = () => {
+        if (state.life === 0) {
+            /* Settiamo il record*/
+            let record = localStorage.getItem('points')
+            if (record < state.points) {
+                localStorage.setItem("points", state.points)
+            }
+            props.callbackReturnToStart()
+        }
         if (state.top === bottomBorder || state.top === topBorder) {
-            alert("Hai perso!")
             setState({
                 ...state,
                 top: 50,
-                startingFlag: true
+                startingFlag: true,
+                life: state.life - 1
             })
         }
     }
 
     return (
-        <div className="core-game" onClick={startGame} onMouseDown={characterJumping} onMouseUp={characterFalling}>
+        <div className="core-game" onMouseDown={characterJumping} onMouseUp={characterFalling}>
             <div
                 className="top-margin bg-red"
                 style={{ top: (topBorder).toString() + "%" }}
@@ -93,7 +98,7 @@ const CoreGame = () => {
             </span>
             {
                 state.startingFlag === true &&
-                <span className="start-game" > Clicca per Cominciare </span>
+                <span className="start-game" > Hai {state.life} vite. Clicca per Cominciare </span>
             }
             <div
                 className="bottom-margin bg-red"
@@ -104,4 +109,9 @@ const CoreGame = () => {
     );
 }
 
+CoreGame.propTypes = {
+    callbackReturnToStart: PropTypes.func,
+};
+
 export default CoreGame;
+
