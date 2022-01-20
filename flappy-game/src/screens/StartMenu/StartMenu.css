@@ -1,0 +1,20 @@
+/* smartphone */
+.start-menu{
+    height:100% ;
+    flex-basis: 600px ;
+    background-color: hotpink;
+}
+
+/* tablet */
+@media only screen and (min-width: 600px){
+    .start-menu{
+        height:666px ;
+    }
+}
+
+
+/* pc */
+@media only screen and (min-width: 1000px){
+}
+
+

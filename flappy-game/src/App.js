@@ -2,12 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 
 /* hooks */
-import screenGame from './screens/screenGame/screenGame';
+import ScreenGame from './screens/ScreenGame/ScreenGame';
 
 function App() {
   return (
     <div className="App">
-      <screenGame></screenGame>
+      <ScreenGame></ScreenGame>
     </div>
   );
 }
