@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react"
 
 const CoreGame = () => {
 
-    let bottomBorder = 10
-    let topBorder = 90
+    let topBorder = 10
+    let bottomBorder = 90
     let jumpingSpeed = 4
     let fallingSpeed = 4
 
@@ -28,7 +28,7 @@ const CoreGame = () => {
             }
 
             /* Controlla che il personaggio non stia saltando oltre il limite superiore   o cadendo oltre il limite inferiore*/
-            if ((state.top < topBorder && !state.jumpingFlag) || (state.top > bottomBorder && state.jumpingFlag)) {
+            if ((state.top > topBorder && state.jumpingFlag) || (state.top < bottomBorder && !state.jumpingFlag)) {
                 const interval = setTimeout(() => {
                     setState({
                         ...state,
@@ -40,11 +40,9 @@ const CoreGame = () => {
             }
         }
     })
-    /* Component Did Update listeing state.top  */
+    /* Component Did Update listening state.top  */
     useEffect(() => {
-        if (state.top === bottomBorder || state.top === topBorder) {
-            alert("hai perso")
-        }
+            endGame()
     }, [state.top])
     /*  */
     /* funzioni movimento */
@@ -67,14 +65,23 @@ const CoreGame = () => {
             startingFlag: false,
         })
     }
-
-
+    /* funzione end game */
+    const endGame = () => {
+        if (state.top === bottomBorder || state.top === topBorder) {
+            alert("Hai perso!")
+            setState({
+                ...state,
+                top: 50,
+                startingFlag: true
+            })
+        }
+    }
 
     return (
         <div className="core-game" onClick={startGame} onMouseDown={characterJumping} onMouseUp={characterFalling}>
             <div
                 className="top-margin bg-red"
-                style={{ top: topBorder.toString() + "%" }}
+                style={{ top: (topBorder).toString() + "%" }}
             >
                 sopra
             </div>
@@ -85,7 +92,7 @@ const CoreGame = () => {
             }
             <div
                 className="bottom-margin bg-red"
-                style={{ top: bottomBorder.toString() + "%" }}
+                style={{ top: (bottomBorder).toString() + "%" }}
             >sotto
             </div>
         </div>
