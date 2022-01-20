@@ -74,7 +74,7 @@ const CoreGame = () => {
         <div className="core-game" onClick={startGame} onMouseDown={characterJumping} onMouseUp={characterFalling}>
             <div
                 className="top-margin bg-red"
-                style={{ height: bottomBorder.toString() + "%" }}
+                style={{ top: topBorder.toString() + "%" }}
             >
                 sopra
             </div>
@@ -85,7 +85,7 @@ const CoreGame = () => {
             }
             <div
                 className="bottom-margin bg-red"
-                style={{ height: bottomBorder.toString() + "%" }}
+                style={{ top: bottomBorder.toString() + "%" }}
             >sotto
             </div>
         </div>
