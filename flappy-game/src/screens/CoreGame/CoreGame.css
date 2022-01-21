@@ -18,18 +18,29 @@
     transition: all .025s linear 0s;
     transform:translate(-50%, -50%)
 }
+.character1{
+    background-image: url('../../assets/images/character1.gif');
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+}
 .start-game{
     position: absolute;
     top: 30%;
     left: 50%;
     transform:translate(-50%, -50%)
-
 }
 .top-margin{
+    background-image: url(../../assets/images/animation_500_kyoi7sls.gif);
+    background-size: contain;
+    height: 60px;
     width: 100%;
     position: absolute;
 }
 .bottom-margin{
+    background-image: url(../../assets/images/animation_500_kyoi7sls.gif);
+    background-size: contain;
+    height: 60px;
     width: 100%;
     position: absolute;
 }

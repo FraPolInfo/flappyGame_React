@@ -1,5 +1,4 @@
 import "./CoreGame.css"
-
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from "react"
 
@@ -7,8 +6,8 @@ const CoreGame = (props) => {
 
     let topBorder = 10
     let bottomBorder = 90
-    let jumpingSpeed = 4
-    let fallingSpeed = 4
+    let jumpingSpeed = 2
+    let fallingSpeed = 2
 
     const [state, setState] = useState({
         top: 50,
@@ -86,25 +85,23 @@ const CoreGame = (props) => {
     return (
         <div className="core-game" onMouseDown={characterJumping} onMouseUp={characterFalling}>
             <div
-                className="top-margin bg-red"
-                style={{ top: (topBorder).toString() + "%" }}
+                className="top-margin"
+                style={{ top: 0 }}
             >
-                sopra
             </div>
             <span
-                className="character"
+                className=" character character1"
                 style={{ left: "50%", top: state.top.toString() + "%" }}
             >
-                XXXXXXX
             </span>
             {
                 state.startingFlag === true &&
                 <span className="start-game" > Hai {state.life} vite. Clicca per Cominciare </span>
             }
             <div
-                className="bottom-margin bg-red"
+                className="bottom-margin"
                 style={{ top: (bottomBorder).toString() + "%" }}
-            >sotto
+            >
             </div>
         </div>
     );
