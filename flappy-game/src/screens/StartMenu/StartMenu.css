@@ -2,13 +2,43 @@
 .start-menu{
     height:100% ;
     flex-basis: 600px ;
-    background-color: hotpink;
+    background-color: black;
+    position:relative;
 }
+
+.title-svg{
+    position: absolute;
+    left: 10%;
+    text-align: center;
+    overflow-y: hidden;
+    
+}
+
+.title-svg svg{
+    transform: rotate(13deg);
+    position: relative;
+}
+
+.title-svg path {
+    fill: transparent;
+
+}
+  
+.title-svg text {
+    font-size: 40px;
+    margin-left: 100px;
+    fill: azure;
+
+  }
 
 /* tablet */
 @media only screen and (min-width: 600px){
     .start-menu{
         height:666px ;
+    }
+    .title-svg{
+        position: absolute;
+        left: 17%;
     }
 }
 
@@ -16,5 +46,4 @@
 /* pc */
 @media only screen and (min-width: 1000px){
 }
-
 
