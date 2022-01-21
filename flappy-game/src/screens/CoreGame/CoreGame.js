@@ -84,6 +84,15 @@ const CoreGame = (props) => {
 
     return (
         <div className="core-game" onMouseDown={characterJumping} onMouseUp={characterFalling}>
+            <div className="ui-container">
+                <div className="ui-life">
+                    <div className="character1 character-icon"></div>
+                    <div>x {state.life}</div>
+                </div>
+                <div className="ui-points">
+                Score {state.points}
+                </div>
+            </div>
             <div
                 className="top-margin"
                 style={{ top: 0 }}
@@ -96,7 +105,7 @@ const CoreGame = (props) => {
             </span>
             {
                 state.startingFlag === true &&
-                <span className="start-game" > Hai {state.life} vite. Clicca per Cominciare </span>
+                <span className="start-game" > Clicca per Cominciare </span>
             }
             <div
                 className="bottom-margin"

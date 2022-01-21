@@ -3,7 +3,6 @@
     background-color: red;
 }
 
-
 /* smartphone */
 .core-game{
     height:100% ;
@@ -24,8 +23,15 @@
     height: 150px;
     width: 150px;
 }
+
+.character-icon{
+    height: 50px;
+    width: 50px;
+}
+
 .start-game{
     position: absolute;
+    color: white;
     top: 30%;
     left: 50%;
     transform:translate(-50%, -50%)
@@ -45,10 +51,30 @@
     position: absolute;
 }
 
+.ui-container{
+    position: absolute;
+    transform: translate(0, -20%);
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    width: 100%;
+}
+
+.ui-points{
+    position: relative;
+    top: 13px;
+}
+
+.ui-life{
+    display: flex;
+    align-items: center;
+}
+
 /* tablet */
 @media only screen and (min-width: 600px){
     .core-game{
-        height:666px ;
+        height:566px ;
+        overflow: hidden;
     }
 }
 
