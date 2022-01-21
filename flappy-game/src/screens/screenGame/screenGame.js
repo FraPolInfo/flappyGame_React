@@ -42,8 +42,9 @@ const ScreenGame = () => {
 
     return (
         <div>
-            <div className=" screen-game-background"></div>
-            <div className="screen-game" >
+            <div className="screen-game-background">
+            </div>
+            <div className="screen-game">
                 {
                     state.showStartMenu === true &&
                     <StartMenu
@@ -58,7 +59,6 @@ const ScreenGame = () => {
                 }
             </div>
         </div>
-
     )
 }
 export default ScreenGame

@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto; 
+}
+
 .screen-game{
     height: 100vh;
     display: flex ;
@@ -6,17 +13,29 @@
     z-index: 1001;
 }
 
-.screen-game-background::after{
-  background-image: url("../../assets/images/backgrounds/Nebula\ Blue.png");
+.screen-game-background {
+    width: 8100px;
+    height: 100vh;
+    position: absolute;
+    z-index: -1001;
+    background-image: url("../../assets/images/backgrounds/Nebula\ Blue.png");
+    animation: bg-animation 100s linear infinite;
+  }
+
+.screen-game-background::before{
+  content: "";
+  background-image: url("../../assets/images/backgrounds/Stars\ Small_1.png");
   position: absolute;
   display: block;
   width: 100%;
   height: 100vh;
-  animation: bg-animation 30s linear 0s infinite;
-  z-index: -1001;
+  animation: bg-animation 40s linear infinite;
 }
+
+
+
 @keyframes bg-animation {
     to {
-      transform: translateX(-2560px);
+      transform: translateX(-4096px);
     }
 }
