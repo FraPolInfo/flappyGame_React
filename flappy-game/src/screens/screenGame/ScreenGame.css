@@ -14,24 +14,33 @@
 }
 
 .screen-game-background {
-    width: 8100px;
+    width: 8192px;
     height: 100vh;
     position: absolute;
     z-index: -1001;
-    background-image: url("../../assets/images/backgrounds/Nebula\ Blue.png");
+    background-image: url("../../assets/images/backgrounds/NebulaBlue.png");
     animation: bg-animation 100s linear infinite;
   }
 
 .screen-game-background::before{
-  content: "";
-  background-image: url("../../assets/images/backgrounds/Stars\ Small_1.png");
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100vh;
-  animation: bg-animation 40s linear infinite;
+    content: "";
+    background-image: url("../../assets/images/backgrounds/StarsSmall.png");
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    animation: bg-animation 40s linear infinite;
 }
 
+.screen-game-background::after{
+    content: "";
+    background-image: url("../../assets/images/backgrounds/StarsBig.png");
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    animation: bg-animation 20s linear infinite;
+}
 
 
 @keyframes bg-animation {

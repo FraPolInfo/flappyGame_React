@@ -7,8 +7,8 @@
 /* smartphone */
 .core-game{
     height:100% ;
-    flex-basis: 600px ;
-    background-color: azure;
+    flex-basis: 100% ;
+    background-color: transparent;
     position: relative;
 }
 
