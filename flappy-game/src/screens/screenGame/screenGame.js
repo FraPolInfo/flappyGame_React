@@ -14,7 +14,7 @@ const ScreenGame = () => {
             showRunGame: false,
         }
     )
-    /* ComponentdidUpdate */
+    /* Component did Mount */
     useEffect(() => {
         localStorage.setItem("points", 0);
     }, [])
@@ -41,21 +41,24 @@ const ScreenGame = () => {
 
 
     return (
-        <div className="screen-game" >
-
-            {
-                state.showStartMenu === true &&
-                <StartMenu
-                    callbackRunGame={showScreens}
-                />
-            }
-            {
-                state.showRunGame === true &&
-                <CoreGame 
-                    callbackReturnToStart={showScreens}
+        <div>
+            <div className=" screen-game-background"></div>
+            <div className="screen-game" >
+                {
+                    state.showStartMenu === true &&
+                    <StartMenu
+                        callbackRunGame={showScreens}
                     />
-            }
+                }
+                {
+                    state.showRunGame === true &&
+                    <CoreGame
+                        callbackReturnToStart={showScreens}
+                    />
+                }
+            </div>
         </div>
+
     )
 }
 export default ScreenGame

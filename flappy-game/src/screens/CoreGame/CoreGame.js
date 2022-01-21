@@ -15,7 +15,7 @@ const CoreGame = (props) => {
         startingFlag: true,
         jumpingFlag: false,
         life: 3,
-        points: 5
+        points: 0
     })
 
     /* Component Did Update
@@ -35,7 +35,8 @@ const CoreGame = (props) => {
             const interval = setTimeout(() => {
                 setState({
                     ...state,
-                    top: top
+                    top: top,
+                    points: state.points + 1
                 })
             }, 30)
 
