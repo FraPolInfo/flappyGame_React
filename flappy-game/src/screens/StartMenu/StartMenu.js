@@ -2,6 +2,10 @@ import "./StartMenu.css"
 
 import PropTypes from 'prop-types';
 
+/* funcComponets */
+import Button from "../../components/funcComponents/Button/Button";
+
+
 
 const StartMenu = (props) => {
 
@@ -23,9 +27,21 @@ const StartMenu = (props) => {
                     </text>
                 </svg>
             </div>
+            <div className="container-interaction-menu">
+                <div className="margin-title"></div>
+                <div className="container-buttons">
+                    <div className="one-button">
+                        <Button label={"AVVIA GIOCO"} clickButton={handlerRunGame}></Button>
+                    </div>
+                    <div className="one-button">
+                        <Button label={"COME GIOCARE"}></Button>
+                    </div>
+                </div>
+            </div>
+
 
             Il record Attuale è {localStorage.getItem('points')}
-            <button onClick={handlerRunGame} > avvia gioco </button>
+
         </div>
     )
 }
