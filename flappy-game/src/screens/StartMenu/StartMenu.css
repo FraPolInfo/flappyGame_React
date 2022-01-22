@@ -1,36 +1,45 @@
 /* smartphone */
 .start-menu{
+    color: white;
     height:100% ;
     flex-basis: 600px ;
     background-color: black;
     position:relative;
 }
-
 .title-svg{
+    width: 100%;
     position: absolute;
-    left: 10%;
+    left: 10%; 
     text-align: center;
-    overflow-y: hidden;
-    
+    overflow: hidden;
 }
-
 .title-svg svg{
     transform: rotate(13deg);
     position: relative;
 }
-
 .title-svg path {
     fill: transparent;
 
-}
-  
+} 
 .title-svg text {
     font-size: 40px;
     margin-left: 100px;
     fill: azure;
 
-  }
-
+}
+.container-interaction-menu{
+    display: flex;
+    flex-direction: column;
+}
+.margin-title{
+    height: 160px;
+}
+.container-buttons{
+    text-align: center;
+}
+.one-button{
+    margin: 7.5px;
+}
 /* tablet */
 @media only screen and (min-width: 600px){
     .start-menu{
@@ -40,6 +49,9 @@
         position: absolute;
         left: 17%;
     }
+
+
+
 }
 
 

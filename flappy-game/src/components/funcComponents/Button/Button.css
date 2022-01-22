@@ -1,0 +1,7 @@
+.default{
+    color: aqua ;
+    background-color:rgba( 50, 48, 85, .5);
+    border: none;
+    border-radius: 15PX;
+    padding: 15px;
+}
