@@ -4,7 +4,6 @@
     overflow-x: hidden;
     overflow-y: auto; 
 }
-
 .screen-game{
     height: 100vh;
     display: flex ;

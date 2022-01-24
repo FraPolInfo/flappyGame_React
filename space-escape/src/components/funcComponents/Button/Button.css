@@ -29,3 +29,7 @@
     color: yellow;
     padding: 0px 8px;
 }
+.sound-bottom{
+    position: absolute;
+    top: 0px;
+}

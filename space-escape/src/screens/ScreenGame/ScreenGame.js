@@ -5,14 +5,16 @@ import audio from '../../assets/audio/MountainTrials.mp3'
 import StartMenu from "../StartMenu/StartMenu"
 import CoreGame from "../CoreGame/CoreGame"
 import RulesGame from "../RulesGame/RulesGame"
+/* func Components */
+import Button from "../../components/funcComponents/Button/Button"
 
 
 const ScreenGame = () => {
 
-    const music = new Audio(audio);
-    const soundFlag = false;
     const [state, setState] = useState(
         {
+            music: new Audio(audio),
+            soundFlag: false,
             character: null,
             showStartMenu: true,
             showRunGame: false,
@@ -26,13 +28,20 @@ const ScreenGame = () => {
     /*  */
     /* attiva audio */
     const activeSound = () => {
-        if (soundFlag === false) {
-            music.play()
-            soundFlag = true;
+        let flag = null;
+        if (state.soundFlag === false) {
+            state.music.play();
+            state.music.volume = 0.1;
+            state.music.loop = true;
+            flag = true;
         } else {
-            music.pause()
-            soundFlag = false;
+            state.music.pause();
+            flag = false;
         }
+        setState({
+            ...state,
+            soundFlag: flag,
+        })
     }
     /* funzione di visualizzazione */
     const showScreens = (string) => {
@@ -68,11 +77,16 @@ const ScreenGame = () => {
 
 
     return (
-        <div>
+        <div className="cover-screen-game">
+
             <div className="screen-game-background">
             </div>
             <div className="screen-game">
-                <button onClick={activeSound}>attiva audio</button>
+                <Button
+                    clickButton={activeSound}
+                    label="sound"
+                    specialClass="sound-bottom"
+                />
                 {
                     state.showStartMenu === true &&
                     <StartMenu
