@@ -83,41 +83,42 @@ const CoreGame = (props) => {
     }
 
     return (
-        <div className="core-game" onMouseDown={characterJumping} onMouseUp={characterFalling}>
+        <div className="container-core-game">
             <div className="ui-container">
                 <div className="ui-life">
-                    <div className="character1 character-icon"></div>
+                    <div className={`${props.character} character-icon`}></div>
                     <div>x {state.life}</div>
                 </div>
                 <div className="ui-points">
-                Score {state.points}
+                    Score {state.points}
                 </div>
             </div>
-            <div
-                className="top-margin"
-                style={{ top: 0 }}
-            >
-            </div>
-            <span
-                className=" character character1"
-                style={{ left: "50%", top: state.top.toString() + "%" }}
-            >
-            </span>
-            {
-                state.startingFlag === true &&
-                <span className="start-game" > Clicca per Cominciare </span>
-            }
-            <div
-                className="bottom-margin"
-                style={{ top: (bottomBorder).toString() + "%" }}
-            >
+            <div className="core-game" onMouseDown={characterJumping} onMouseUp={characterFalling}>
+                <div className="top-margin"
+                    style={{ top: 0 }}
+                >
+                </div>
+                <span className={`character ${props.character}`}
+                    style={{ left: "50%", top: state.top.toString() + "%" }}
+                >
+                </span>
+                {
+                    state.startingFlag === true &&
+                    <span className="start-game" > Clicca per Cominciare </span>
+                }
+                <div className="bottom-margin"
+                    style={{ top: (bottomBorder).toString() + "%" }}
+                >
+                </div>
             </div>
         </div>
+
     );
 }
 
 CoreGame.propTypes = {
     callbackReturnToStart: PropTypes.func,
+    character: PropTypes.string,
 };
 
 export default CoreGame;

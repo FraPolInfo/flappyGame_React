@@ -10,6 +10,7 @@ const ScreenGame = () => {
 
     const [state, setState] = useState(
         {
+            character: null,
             showStartMenu: true,
             showRunGame: false,
         }
@@ -19,8 +20,9 @@ const ScreenGame = () => {
         localStorage.setItem("points", 0);
     }, [])
 
+    /*  */
     /* funzione di visualizzazione */
-    const showScreens = () => {
+    const showScreens = (string) => {
         let showRunGame = null;
         let showStartMenu = null;
         if (state.showRunGame === false) {
@@ -34,7 +36,8 @@ const ScreenGame = () => {
             {
                 ...state,
                 showRunGame: showRunGame,
-                showStartMenu: showStartMenu
+                showStartMenu: showStartMenu,
+                character: string
             }
         )
     }
@@ -55,6 +58,7 @@ const ScreenGame = () => {
                     state.showRunGame === true &&
                     <CoreGame
                         callbackReturnToStart={showScreens}
+                        character={state.character}
                     />
                 }
             </div>

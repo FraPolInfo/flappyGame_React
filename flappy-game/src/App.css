@@ -3,3 +3,24 @@
 *{
   font-family: 'Mochiy Pop P One', sans-serif;
 }
+
+
+/* Characters list */
+.character1{
+  background-image: url('./assets/images/character1.gif');
+  background-size: cover;
+  height: 150px;
+  width: 150px;
+}
+.character2{
+  background-image: url('./assets/images/character2.gif');
+  background-size: cover;
+  height: 150px;
+  width: 150px;
+}
+.character3{
+  background-image: url('./assets/images/character3.gif');
+  background-size: cover;
+  height: 150px;
+  width: 150px;
+}
