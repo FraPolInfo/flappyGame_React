@@ -18,24 +18,32 @@ const StartMenu = (props) => {
 
     /* choose character */
     const nextCharacter = () => {
+        let result = 0;
         if (state.indexOfCharacter < state.arrCharacter.length - 1) {
-            setState(
-                {
-                    ...state,
-                    indexOfCharacter: state.indexOfCharacter + 1
-                }
-            )
+            result = state.indexOfCharacter + 1;
+        } else {
+            result = 0
         }
+        setState(
+            {
+                ...state,
+                indexOfCharacter: result
+            }
+        )
     }
     const prevCharacter = () => {
+        let result = 0;
         if (state.indexOfCharacter > 0) {
-            setState(
-                {
-                    ...state,
-                    indexOfCharacter: state.indexOfCharacter - 1
-                }
-            )
+            result = state.indexOfCharacter - 1;
+        } else {
+            result = state.arrCharacter.length - 1
         }
+        setState(
+            {
+                ...state,
+                indexOfCharacter: result
+            }
+        )
     }
     /*  */
     const handlerRunGame = () => {
@@ -47,7 +55,7 @@ const StartMenu = (props) => {
     const handlerShowRules = () => {
         if (props.callbackShowRules !== undefined) {
             props.callbackShowRules();
-        }       
+        }
     }
 
     return (
