@@ -1,6 +1,7 @@
 import "./StartMenu.css"
 
 import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react"
 
 /* funcComponets */
 import Button from "../../components/funcComponents/Button/Button";
@@ -9,9 +10,37 @@ import Button from "../../components/funcComponents/Button/Button";
 
 const StartMenu = (props) => {
 
+
+    const [state, setState] = useState({
+        arrCharacter: ["character1", "character2", "character3"],
+        indexOfCharacter: 0
+    })
+
+    /* choose character */
+    const nextCharacter = () => {
+        if (state.indexOfCharacter < state.arrCharacter.length - 1) {
+            setState(
+                {
+                    ...state,
+                    indexOfCharacter: state.indexOfCharacter + 1
+                }
+            )
+        }
+    }
+    const prevCharacter = () => {
+        if (state.indexOfCharacter > 0) {
+            setState(
+                {
+                    ...state,
+                    indexOfCharacter: state.indexOfCharacter - 1
+                }
+            )
+        }
+    }
+    /*  */
     const handlerRunGame = () => {
         if (props.callbackRunGame !== undefined) {
-            props.callbackRunGame();
+            props.callbackRunGame(state.arrCharacter[state.indexOfCharacter]);
         }
     }
 
@@ -35,6 +64,12 @@ const StartMenu = (props) => {
             </div>
             <div className="container-interaction-menu">
                 <div className="margin-title"></div>
+                <div className={"choose-character"} >
+                    <Button label="<" specialClass="prevButton" clickButton={prevCharacter} />
+                    <div className={`show-caracter  ${state.arrCharacter[state.indexOfCharacter]}`}>
+                    </div>
+                    <Button label=">" specialClass="nextButton" clickButton={nextCharacter} />
+                </div>
                 <div className="container-buttons">
                     <div className="one-button">
                         <Button label={"AVVIA GIOCO"} clickButton={handlerRunGame}></Button>
@@ -59,6 +94,7 @@ StartMenu.defaultProps = {
 StartMenu.propTypes = {
     callbackRunGame: PropTypes.func,
     callbackShowRules: PropTypes.func
+
 };
 
 export default StartMenu;

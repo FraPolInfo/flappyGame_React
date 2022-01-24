@@ -31,8 +31,14 @@
     display: flex;
     flex-direction: column;
 }
+
 .margin-title{
     height: 160px;
+}
+.choose-character{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 .container-buttons{
     text-align: center;
