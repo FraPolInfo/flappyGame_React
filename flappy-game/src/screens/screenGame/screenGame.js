@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 /* hooks functions */
 import StartMenu from "../StartMenu/StartMenu"
 import CoreGame from "../CoreGame/CoreGame"
+import RulesGame from "../RulesGame/RulesGame"
 
 
 const ScreenGame = () => {
@@ -12,6 +13,7 @@ const ScreenGame = () => {
         {
             showStartMenu: true,
             showRunGame: false,
+            showRulesGame: false
         }
     )
     /* Component did Mount */
@@ -19,7 +21,7 @@ const ScreenGame = () => {
         localStorage.setItem("points", 0);
     }, [])
 
-    /* funzione di visualizzazione */
+    /* funzioni di visualizzazione */
     const showScreens = () => {
         let showRunGame = null;
         let showStartMenu = null;
@@ -38,6 +40,16 @@ const ScreenGame = () => {
             }
         )
     }
+    const showRules = () => {
+        let shouldRulesShow = state.showRulesGame
+        let shouldStartShow = state.showStartMenu
+
+        setState({
+            ...state,
+            showRulesGame: !shouldRulesShow,
+            showStartMenu: !shouldStartShow
+        }) 
+    }
 
 
     return (
@@ -49,6 +61,7 @@ const ScreenGame = () => {
                     state.showStartMenu === true &&
                     <StartMenu
                         callbackRunGame={showScreens}
+                        callbackShowRules={showRules}
                     />
                 }
                 {
@@ -56,6 +69,10 @@ const ScreenGame = () => {
                     <CoreGame
                         callbackReturnToStart={showScreens}
                     />
+                }
+                {
+                    state.showRulesGame === true &&
+                    <RulesGame callbackReturnToStart={showRules}/>
                 }
             </div>
         </div>
