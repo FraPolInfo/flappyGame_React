@@ -5,10 +5,11 @@
     flex-basis: 100% ;  
 }
 .core-game{
-    height:100% ;
+    height:566px ;
     flex-basis: 100% ;
     background-color: transparent;
     position: relative;
+    overflow: hidden;
 }
 .character{
     color: red;
@@ -58,10 +59,7 @@
 }
 /* tablet */
 @media only screen and (min-width: 600px){
-    .core-game{
-        height:566px ;
-        overflow: hidden;
-    }
+
 }
 /* pc */
 @media only screen and (min-width: 1000px){

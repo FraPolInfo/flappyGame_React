@@ -46,6 +46,10 @@
 .one-button{
     margin: 7.5px;
 }
+.your-points{
+    text-align: center;
+    margin: 7.5px;
+}
 /* tablet */
 @media only screen and (min-width: 600px){
     .start-menu{

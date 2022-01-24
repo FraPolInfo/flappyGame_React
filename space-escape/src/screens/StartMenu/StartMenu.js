@@ -88,8 +88,9 @@ const StartMenu = (props) => {
                 </div>
             </div>
 
-
-            Il record Attuale è {localStorage.getItem('points')}
+            <div className="your-points">
+                Il record Attuale è {localStorage.getItem('points')}
+            </div>
 
         </div>
     )
