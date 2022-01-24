@@ -44,6 +44,12 @@ const StartMenu = (props) => {
         }
     }
 
+    const handlerShowRules = () => {
+        if (props.callbackShowRules !== undefined) {
+            props.callbackShowRules();
+        }       
+    }
+
     return (
         <div className="start-menu">
             <div className="title-svg">
@@ -69,7 +75,7 @@ const StartMenu = (props) => {
                         <Button label={"AVVIA GIOCO"} clickButton={handlerRunGame}></Button>
                     </div>
                     <div className="one-button">
-                        <Button label={"COME GIOCARE"}></Button>
+                        <Button label={"COME GIOCARE"} clickButton={handlerShowRules}></Button>
                     </div>
                 </div>
             </div>
@@ -87,7 +93,7 @@ StartMenu.defaultProps = {
 
 StartMenu.propTypes = {
     callbackRunGame: PropTypes.func,
-    callbackCharacter: PropTypes.func
+    callbackShowRules: PropTypes.func
 
 };
 
