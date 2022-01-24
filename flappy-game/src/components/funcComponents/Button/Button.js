@@ -12,13 +12,13 @@ const Button = (props) => {
 
 
     return (
-        <>
+        <div className="container-button">
             <button
                 className={`default ${props.specialClass}`}
                 onClick={handlerButtonClick}>
                 {props.label}
             </button>
-        </>
+        </div>
     )
 }
 Button.defaultProps = {
